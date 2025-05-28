@@ -20,7 +20,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: kapiteinbas/bleepblob-identity-service
+          images: kapiteinbas/bleepblob-upload-service
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
