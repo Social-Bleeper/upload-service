@@ -28,3 +28,10 @@ jobs:
 
       - name: Build and run SpotBugs
         run: mvn clean verify
+
+      - name: Upload SpotBugs report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spotbugs-report
+          path: target/spotbugsXml.xml
