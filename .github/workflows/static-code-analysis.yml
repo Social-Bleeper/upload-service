@@ -1,12 +1,13 @@
+name: Static Code Analysis
+
 on:
   push:
     branches: [ "main", "develop", "release/**" ]
   pull_request:
     types: [ opened, synchronize, reopened ]
 
-name: Static Code Analysis
 jobs:
-  spotbugs:
+  static-analysis:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,3 +36,15 @@ jobs:
         with:
           name: spotbugs-report
           path: target/spotbugsXml.xml
+
+      - name: Run OWASP Dependency-Check with NVD API key
+        run: mvn org.owasp:dependency-check-maven:check
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+
+      - name: Upload Dependency-Check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-check-report
+          path: target/dependency-check-report.html
