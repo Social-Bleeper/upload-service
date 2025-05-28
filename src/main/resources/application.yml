@@ -1,0 +1,66 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: upload-service
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://identity:8081/.well-known/jwks.json
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  main:
+    banner-mode: log
+
+  datasource:
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        # Format queries
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+    open-in-view: true
+
+supabase:
+  project-ref: nnggmlcilcntpikhdtdr
+  access-key: e647f63a6227313c8572631fe6668627
+  secret-key: 8241993d1ab6c575ca1e247f3072a04ce602b310c6d662b8796167bcb782193a
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    prometheus:
+      enabled: true
