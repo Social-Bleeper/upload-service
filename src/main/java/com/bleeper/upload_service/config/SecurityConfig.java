@@ -36,7 +36,7 @@ public class SecurityConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/upload")
+                registry.addMapping("/**")
                         .allowedOrigins("http://localhost:3000")
                         .allowedMethods("POST")
                         .allowedHeaders("*")

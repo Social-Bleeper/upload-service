@@ -49,8 +49,8 @@ spring:
 
 supabase:
   project-ref: nnggmlcilcntpikhdtdr
-  access-key: e647f63a6227313c8572631fe6668627
-  secret-key: 8241993d1ab6c575ca1e247f3072a04ce602b310c6d662b8796167bcb782193a
+  access-key: baae8bede66c0696a8caff79dfa04cb5
+  secret-key: 167672c38f965213310185823f76b6c7274e00b5ecde4280a25465bdf2b3240c
 
 management:
   endpoints:
