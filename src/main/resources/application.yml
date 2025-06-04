@@ -16,12 +16,6 @@ spring:
         jwt:
           jwk-set-uri: http://identity:8081/.well-known/jwks.json
 
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
   main:
     banner-mode: log
 
